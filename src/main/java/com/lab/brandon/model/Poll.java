@@ -10,18 +10,18 @@ public class Poll implements Comparable<Poll> {
     @SequenceGenerator(
             name = "question_generator",
             sequenceName = "question_sequence",
-            initialValue = 100
+            initialValue = 101
     )
 
     public long id;
-    public String question;
+    public String caption;
     public int upvotes;
     public int downvotes;
 
     public Poll (){}
 
     public Poll (String question) {
-        this.question = question;
+        this.caption = question;
     }
 
     @Override

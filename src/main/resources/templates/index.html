@@ -21,7 +21,7 @@
                 <th>Down Votes</th>
             </tr>
             <tr th:each="poll : ${poll}">
-                <td th:text="${poll.question}"></td>
+                <td th:text="${poll.caption}"></td>
                 <td th:text="${poll.upvotes}"></td>
                 <td th:text="${poll.downvotes}"></td>
                 <td>
