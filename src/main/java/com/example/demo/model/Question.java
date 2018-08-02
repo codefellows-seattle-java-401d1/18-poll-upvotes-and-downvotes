@@ -3,7 +3,7 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="question")
+@Table(name="untitled_table")
 public class Question implements Comparable<Question>{
     @Id
     @GeneratedValue(generator = "question_generator")
