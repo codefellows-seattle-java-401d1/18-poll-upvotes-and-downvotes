@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>homepage</title>
+</head>
+<body>
+    <h1>title</h1>
+    <p>hello!</p>
+    <p th:text="'The current time is: ' + ${currenttime}" />
+    <form action="/question/" method="POST">
+        <label>Question: <input type="text" name="Question" /></label>
+        <input type="submit">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Question</th>
+            <th>votes</th>
+            <th>upvote</th>
+            <th>downvote</th>
+        </tr>
+        <tr th:each="question : ${questions}">
+            <td th:text="${question}"></td>
+            <td>
+                <a th:href="'/question/' + ${question.id} + '/upvote'">
+                    upvote
+                </a>
+            </td>
+            <td>
+                <a th:href="'/question/' + ${question.id} + '/down'">
+                    down
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
