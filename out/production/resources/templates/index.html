@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>homepage</title>
+</head>
+<body>
+    <h1>title</h1>
+    <p>hello!</p>
+    <p th:text="'The current time is: ' + ${currenttime}" />
+    <form action="/question/" method="POST">
+        <label>Ask a Question: <input type="text" name="question" /></label>
+        <input type="submit">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Questions</th>
+            <th>total up</th>
+            <th>total down</th>
+            <th>upvote</th>
+            <th>downvote</th>
+        </tr>
+        <tr th:each="question : ${question}">
+            <td th:text="${question.question}"></td>
+            <td th:text="${question.upVotes}"></td>
+            <td th:text="${question.downVotes}"></td>
+            <td>
+                <a th:href="'/question/' + ${question.id} + '/upvote'">
+                    upvote
+                </a>
+            </td>
+            <td>
+                <a th:href="'/question/' + ${question.id} + '/downvote'">
+                    downvote
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
