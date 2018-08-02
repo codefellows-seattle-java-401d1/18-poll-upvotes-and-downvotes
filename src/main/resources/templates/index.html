@@ -7,7 +7,31 @@
     </head>
     <body>
         <h1>Vote For the Best Caption!</h1>
-        <p th:text="'Today is: ' + ${currenttime}"></p>
+        <img src="/images/what-is-this.jpg" />
+        <form action="/poll/" method="POST">
+            <legend>Submit your own caption...</legend>
+            <label>Caption: <input type="text" name="caption"/></label>
+            <input type="submit">
+        </form>
+
+        <table border="1">
+            <tr>
+                <th>Caption</th>
+                <th>Up Votes</th>
+                <th>Down Votes</th>
+            </tr>
+            <tr th:each="poll : ${poll}">
+                <td th:text="${poll.question}"></td>
+                <td th:text="${poll.upvotes}"></td>
+                <td th:text="${poll.downvotes}"></td>
+                <td>
+                    <a th:href="'/poll/' + ${poll.id} + '/upvote'">Up Vote</a>
+                </td>
+                <td>
+                    <a th:href="'/poll/' + ${poll.id} + '/downvote'">Down Vote</a>
+                </td>
+            </tr>
+        </table>
 
     </body>
 </html>

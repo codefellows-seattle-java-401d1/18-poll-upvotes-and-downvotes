@@ -15,8 +15,8 @@ public class Poll implements Comparable<Poll> {
 
     public long id;
     public String question;
-    public int upVotes;
-    public int downVotes;
+    public int upvotes;
+    public int downvotes;
 
     public Poll (){}
 
@@ -26,8 +26,8 @@ public class Poll implements Comparable<Poll> {
 
     @Override
     public int compareTo (Poll q) {
-        int totalVotesThis = this.upVotes - this.downVotes;
-        int totalVotesQ = q.upVotes - q.downVotes;
+        int totalVotesThis = this.upvotes - this.downvotes;
+        int totalVotesQ = q.upvotes - q.downvotes;
         return totalVotesQ - totalVotesThis;
     }
 }
