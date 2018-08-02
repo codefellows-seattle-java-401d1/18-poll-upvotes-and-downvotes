@@ -21,36 +21,22 @@ public class PollController {
     public List<Poll> getAll() {
         List<Poll> questions = pollRepository.findAll();
         Collections.sort(questions);
+
         return questions;
     }
 
     @PostMapping("/")
-    @ResponseBody
-    public Poll create(
+    public String create(
          @RequestParam String question
     ) {
         int upvotes = 0;
         int downvotes = 0;
+        int summedvotes = 0;
         String subject = "";
-        Poll pollQuestion = new Poll(question, upvotes, downvotes);
+        Poll pollQuestion = new Poll(question, upvotes, downvotes, summedvotes);
         pollQuestion = pollRepository.save(pollQuestion);
-        return pollQuestion;
+        return "redirect:/";
     }
-
-    /*
-    ==== ORIGINAL ====
-    @PostMapping("/")
-    @ResponseBody
-    public Poll create(
-            @RequestParam String question,
-            @RequestParam int upvotes,
-            @RequestParam int downvotes
-    ) {
-        Poll pollQuestion = new Poll(question, upvotes, downvotes);
-        pollQuestion = pollRepository.save(pollQuestion);
-        return pollQuestion;
-    }
-    */
 
     @GetMapping("/{id}/upvote")
     public String upvote(
@@ -60,6 +46,7 @@ public class PollController {
         Poll pollQuestion = (Poll) optional.get();
         if (pollQuestion != null) {
             pollQuestion.upvotes++;
+            pollQuestion.summedvotes = pollQuestion.upvotes - pollQuestion.downvotes;
             pollRepository.save(pollQuestion);
         }
         return "redirect:/";
@@ -73,6 +60,7 @@ public class PollController {
         Poll pollQuestion = (Poll) optional.get();
         if (pollQuestion != null) {
             pollQuestion.downvotes++;
+            pollQuestion.summedvotes = pollQuestion.upvotes - pollQuestion.downvotes;
             pollRepository.save(pollQuestion);
         }
         return "redirect:/";
