@@ -1,0 +1,136 @@
+body {
+    background-color: lightskyblue;
+    width: 100vw;
+}
+
+header {
+    align-items: center;
+    border-bottom: 2px dashed midnightblue;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    justify-content: center;
+    width: 100%;
+}
+
+header div h1 {
+    font-size: 3em;
+    text-align: center;
+    margin: 0px;
+}
+
+header div h2 {
+    font-size: 2em;
+    text-align: center;
+    margin: 0px;
+}
+
+header div p {
+    text-align: center;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+header nav {
+    margin: auto;
+}
+header nav a {
+    color: white;
+    display: inherit;
+    font-size: 1.5em;
+    font-weight: bolder;
+    text-align: center;
+}
+
+main {
+    margin: auto;
+    /*width: 80vw;*/
+}
+
+main #table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+main #form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 4em;
+    justify-content: center;
+    width: 100%;
+}
+
+form {
+    background-color: azure;
+    border: 2px solid midnightblue;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+input[type=text] {
+    border: 1px solid midnightblue;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+input[type=submit] {
+    border: 1px solid midnightblue;
+    border-radius: 7px;
+    font-size: 1em;
+}
+
+form textarea {
+    border: 1px solid midnightblue;
+    border-radius: 10px;
+    font-size: 1em;
+    padding-bottom: .25em;
+}
+
+#submit {
+    padding-top: 1em;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 2em;
+    width: 80%;
+}
+
+td {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid midnightblue;
+}
+
+th {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid midnightblue;
+}
+
+.question-area {
+    padding-right: .5em;
+    width: 50%;
+}
+
+.upvote-area {
+    text-align: center;
+    width: 10%;
+}
+
+.downvote-area {
+    text-align: center;
+    width: 10%;
+}
+
+.single-col {
+    border-right: 1px solid midnightblue;
+}
