@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    
+    <title>homepage</title>
+</head>
+<div id="particles-js"></div>
+<body>
+    <h1>QuesntionBoi</h1>
+    <p>Welcome to the QuestionBoi question site!</p>
+    <p th:text="'The current Time is: ' + ${currenttime}" />
+    <p>Use the form below to submit a question, and see how many upvotes you can get!</p>
+    <form action="/questions/" method="POST">
+        <label>Title: <input type="text" name="title" /></label>
+        <label>Question: <input type="text" name="body"></label>
+        <input type="submit">
+    </form>
+    
+    <div class="questionDiv" th:each="questions : ${questions}">
+        <h1 th:text="${questions.title}"></h1>
+        <p th:text="${questions.body}"></p>
+        <p class="votes" th:text="'Upvotes: ' + ${questions.votes}"></p>
+        <a class="voteButton" th:href="'/questions/' + ${questions.id} + '/upvote'">Upvote</a>
+        
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script href="particle.js"/>
+
+</body>
+
+
+</html>
