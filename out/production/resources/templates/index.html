@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Meme Q's</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <h1>Vote For the Best Caption!</h1>
+
+        <div class="content">
+            <img src="/images/what-is-this.jpg" class="meme"/>
+            <form action="/poll/" method="POST">
+                <legend>Submit your own caption...</legend>
+                <label>Caption: <input type="text" name="caption"/></label>
+                <input type="submit">
+            </form>
+
+            <table border="1">
+                <tr>
+                    <th>Caption</th>
+                    <th>Up Votes</th>
+                    <th>Down Votes</th>
+                </tr>
+                <tr th:each="poll : ${poll}">
+                    <td th:text="${poll.caption}"></td>
+                    <td th:text="${poll.upvotes}"></td>
+                    <td th:text="${poll.downvotes}"></td>
+                    <td>
+                        <a th:href="'/poll/' + ${poll.id} + '/upvote'">Up Vote</a>
+                    </td>
+                    <td>
+                        <a th:href="'/poll/' + ${poll.id} + '/downvote'">Down Vote</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>
