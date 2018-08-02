@@ -1,0 +1,34 @@
+body {
+    background-color: darkslateblue;
+    color: white;
+    font-family: Arial;
+}
+
+h1 {
+    text-align: center;
+}
+
+.content {
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+}
+
+.meme {
+    width: 400px;
+    position: relative;
+    display: block;
+    margin: 1.5em auto;
+}
+
+form {
+    display: block;
+    margin: 1em auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
