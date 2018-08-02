@@ -25,8 +25,7 @@ public class PollController {
     }
 
     @PostMapping("/")
-    @ResponseBody
-    public Poll create(
+    public String create(
          @RequestParam String question
     ) {
         int upvotes = 0;
@@ -34,23 +33,9 @@ public class PollController {
         String subject = "";
         Poll pollQuestion = new Poll(question, upvotes, downvotes);
         pollQuestion = pollRepository.save(pollQuestion);
-        return pollQuestion;
+//        return pollQuestion;
+        return "redirect:/";
     }
-
-    /*
-    ==== ORIGINAL ====
-    @PostMapping("/")
-    @ResponseBody
-    public Poll create(
-            @RequestParam String question,
-            @RequestParam int upvotes,
-            @RequestParam int downvotes
-    ) {
-        Poll pollQuestion = new Poll(question, upvotes, downvotes);
-        pollQuestion = pollRepository.save(pollQuestion);
-        return pollQuestion;
-    }
-    */
 
     @GetMapping("/{id}/upvote")
     public String upvote(
