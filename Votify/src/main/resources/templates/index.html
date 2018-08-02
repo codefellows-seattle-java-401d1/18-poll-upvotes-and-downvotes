@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>homepage</title>
+</head>
+<body>
+    <h1>title</h1>
+    <p>hello!</p>
+    <p th:text="'The current time is: ' + ${currenttime}"/>
+    <form action="/votes/" method="POST">
+        <label>Content: <input type="text" name="content" /></label>
+        <label>Upvote: <input type="number" name="upvote" /></label>
+        <label>Downvote: <input type="number" name="downvote" /></label>
+        <input type="submit">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Content</th>
+            <th>upvote</th>
+            <th>downvote</th>
+        </tr>
+        <tr th:each="vote : ${votes}">
+            <td th:text="${votes.content}"></td>
+            <td th:href="'/votify/' + ${votes.id} + '/upvote'">upvote</td>
+            <td th:text="${votes.downvote}"></td>
+            <td th:href="'/votify/' + ${votes.id} + '/downvote'"> downvote</td>
+
+                </td>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
