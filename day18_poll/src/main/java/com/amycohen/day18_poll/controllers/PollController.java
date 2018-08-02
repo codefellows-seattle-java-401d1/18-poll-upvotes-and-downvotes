@@ -27,14 +27,30 @@ public class PollController {
     @PostMapping("/")
     @ResponseBody
     public Poll create(
-         @RequestParam String questions,
-         @RequestParam int upvotes,
-         @RequestParam int downvotes
+         @RequestParam String question
     ) {
-        Poll pollQuestion = new Poll(questions, upvotes, downvotes);
+        int upvotes = 0;
+        int downvotes = 0;
+        String subject = "";
+        Poll pollQuestion = new Poll(question, upvotes, downvotes);
         pollQuestion = pollRepository.save(pollQuestion);
         return pollQuestion;
     }
+
+    /*
+    ==== ORIGINAL ====
+    @PostMapping("/")
+    @ResponseBody
+    public Poll create(
+            @RequestParam String question,
+            @RequestParam int upvotes,
+            @RequestParam int downvotes
+    ) {
+        Poll pollQuestion = new Poll(question, upvotes, downvotes);
+        pollQuestion = pollRepository.save(pollQuestion);
+        return pollQuestion;
+    }
+    */
 
     @GetMapping("/{id}/upvote")
     public String upvote(

@@ -1,43 +1,83 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>homepage</title>
+    <title>Question</title>
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-    <h1>title</h1>
-    <p>hello!</p>
-    <p th:text="'The current time is: ' + ${currenttime}" />
-    <form action="/questions/" method="POST">
-        <label>Question: <input type="text" name="name" /></label>
-        <!--<label>Upvotes: <input type="text" name="rank" /></label>-->
-        <!--<label>Downvotes: <input type="text" name="shirtColor" /></label>-->
-        <input type="submit">
-    </form>
+    <header>
+        <h1>Welcome!</h1>
+        <h2>Your place for questions on anything and everything</h2>
+        <p th:text="'The current time is: ' + ${currenttime}" />
+    </header>
 
-    <table border="1">
-        <tr>
-            <th>question</th>
-            <th>upvote</th>
-            <th>downvote</th>
-            <th>votes</th>
-            <!--<th>upvote</th>-->
-        </tr>
-        <tr th:each="question : ${questions}">
-            <td th:text="${question.question}"></td>
-            <td th:text="${question.upvotes}"></td>
-            <td th:text="${question.downvotes}"></td>
-            <!--<td th:text="${question.votes}"></td>-->
-            <td>
-                <a th:href="'/questions/' + ${question.id} + '/upvote'">
-                    upvote
-                </a>
-            </td>
-            <td>
-                <a th:href="'/questions/' + ${question.id} + '/downvote'">
-                    downvote
-                </a>
-            </td>
+    <main>
+        <div id="form">
+            <form action="/questions/" method="POST">
+            <!--<div>-->
+                <!--<p>Subject/Title:</p>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<input type="text" name="subject" />-->
+            <!--</div>-->
+            <div>
+            <p>Question: </p>
+            </div>
+            <div>
+                <textarea name="question" rows="4" cols="60"></textarea>
+            </div>
+            <div id="submit">
+            <input type="submit">
+            </div>
+        </form>
+        </div>
 
-        </tr>
-    </table>
+        <div id="table">
+            <table>
+                <tr class="rows">
+                    <th class="single-col">Question</th>
+                    <th class="single-col">UP<br />VOTES</th>
+                    <th class="single-col">DOWN<br />VOTES</th>
+                    <th id="voting" colspan="2">VOTE NOW!</th>
+                </tr>
+                <tr th:each="question : ${questions}">
+                    <td class="question-area single-col" th:text="${question.question}"></td>
+                    <td class="upvote-area single-col" th:text="${question.upvotes}"></td>
+                    <td class="downvote-area single-col" th:text="${question.downvotes}"></td>
+                    <td class="upvote-area">
+                        <a th:href="'/questions/' + ${question.id} + '/upvote'">UP</a>
+                    </td>
+                    <td class="downvote-area">
+                        <a th:href="'/questions/' + ${question.id} + '/downvote'"  class="icon-arrow-down">DOWN</a>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <!--&lt;!&ndash;container&ndash;&gt;-->
+        <!--<div th:each="question : ${questions}">-->
+            <!--&lt;!&ndash;title and vote score&ndash;&gt;-->
+            <!--<div>-->
+                <!--<div th:text="${question.subject}"></div>-->
+                <!--<div th:text="${question.upvotes}"></div>-->
+                <!--<div th:text="${question.downvotes}"></div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;question&ndash;&gt;-->
+            <!--<div th:text="${question.question}"></div>-->
+            <!--&lt;!&ndash;vote links&ndash;&gt;-->
+            <!--<div>-->
+                <!--<div><a th:href="'/questions/' + ${question.id} + '/upvote'">-->
+                    <!--UP-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div><a th:href="'/questions/' + ${question.id} + '/downvote'">-->
+                    <!--DOWN-->
+                <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </main>
+
+
 </body>
 </html>
